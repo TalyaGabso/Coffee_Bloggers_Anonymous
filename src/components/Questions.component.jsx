@@ -1,7 +1,6 @@
 import React from 'react';
 
-const Questions = ({ getNextQuestion,handleAnswer,showCorrectAnswer, data: { id,question,correctAnswer,options }}) => {
-  console.log(correctAnswer);
+const Questions = ({ getNextQuestion,handleAnswer, data: { id,question,correctAnswer,options }}) => {
   const shuffle = (answersArray) => {
     for (let i = answersArray.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * i)
@@ -11,13 +10,12 @@ const Questions = ({ getNextQuestion,handleAnswer,showCorrectAnswer, data: { id,
     };
     return answersArray;
   };
-
   shuffle(options);
 
   return (
     <div>
-      <h3>{id}) {question}</h3>
-      {options.map((option,index) => <input type="button" value={option} onClick={(e) => {handleAnswer(e.target); getNextQuestion()}} key={index+1} style={{backgroundColor:{showCorrectAnswer}}}/>)}
+      <h3>{question}</h3>
+      {options.map((option,index) => <input type="button" value={option} onClick={(e) => {handleAnswer(e.target); getNextQuestion()}} key={index+1}/>)}
     </div>
   );
 };
